@@ -64,8 +64,8 @@ st.write("Pilihlah Pada Bagian Kiri Untuk menampilkan Hasil Analisis")
 
 # Membaca dataset
 
-df_Bday = pd.read_csv("Dashboard/day.csv")
-df_Bhour = pd.read_csv("Dashboard/hour.csv")
+df_Bday = pd.read_csv("Dashboard\dayy.csv")
+df_Bhour = pd.read_csv("Dashboard\hourr.csv")
 
 # Mengonversi kolom "dteday" menjadi tipe data datetime
 df_Bday["dteday"] = pd.to_datetime(df_Bday["dteday"])
