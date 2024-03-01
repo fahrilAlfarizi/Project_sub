@@ -22,6 +22,8 @@ def plot_average_hourly_rentals(df_Bhour):
     ax.set_ylabel('Rata-rata Jumlah Peminjam')
     ax.grid(True)
     ax.set_xticks(range(24))
+    for x, y in zip(average_hourly_rentals.index, average_hourly_rentals.values):
+        plt.text(x, y, f'{y:.0f}', ha='left', va='bottom')
     return fig
 
 # Fungsi untuk menampilkan hubungan antara cuaca dan jumlah peminjam sepeda
@@ -34,6 +36,8 @@ def plot_average_rentals_by_weather(df_Bday):
     ax.set_ylabel('Rata-rata Jumlah Peminjam Sepeda')
     ax.set_xticklabels(ax.get_xticklabels(), rotation=0)
     ax.grid(axis='y')
+    for i, v in enumerate(average_rentals_by_weather.values):
+        plt.text(i, v, f'{v:.0f}', ha='center', va='bottom')
     return fig
 
 # Fungsi untuk menampilkan scatter plot antara suhu udara dan jumlah peminjam sepeda
@@ -44,6 +48,8 @@ def plot_scatter_temp_vs_cnt(df_Bday):
     ax.set_xlabel('Suhu Udara (°C)')
     ax.set_ylabel('Jumlah Peminjam Sepeda')
     ax.grid(True)
+    for temp, cnt in zip(df_Bday['temp'], df_Bday['cnt']):
+        plt.text(temp, cnt, str(int(cnt)), ha='left', va='bottom', fontsize=8, color='red')
     return fig
 
 # Fungsi untuk menampilkan tren penggunaan sepeda pada jam-jam puncak selama hari libur pada bulan Desember 2011
@@ -57,15 +63,16 @@ def plot_hourly_rentals_december_2011(df_Bhour):
     ax.set_ylabel('Jumlah Peminjam Sepeda')
     ax.grid(True)
     ax.set_xticks(range(24))
+    for x, y in zip(hourly_rentals_december_2011.index, hourly_rentals_december_2011.values):
+        plt.text(x, y, f'{y:.0f}', ha='left', va='bottom')
     return fig
 
 st.title('Dashboard Analisis Data Sepeda')
 st.write("Pilihlah Pada Bagian Kiri Untuk menampilkan Hasil Analisis")
 
 # Membaca dataset
-
-df_Bday = pd.read_csv("Bike-sharing-dataset/day.csv")
-df_Bhour = pd.read_csv("Bike-sharing-datase/hour.csv")
+df_Bday = pd.read_csv("Dashboard\day.csv")
+df_Bhour = pd.read_csv("Dashboard\hour.csv")
 
 # Mengonversi kolom "dteday" menjadi tipe data datetime
 df_Bday["dteday"] = pd.to_datetime(df_Bday["dteday"])
@@ -145,6 +152,9 @@ def show_boxplot(dataframe, x, y, title, xlabel, ylabel):
     ax.set_title(title)
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
+    for i, box in enumerate(ax.artists):
+        num_data = len(dataframe[dataframe[x] == i][y])
+        ax.text(box.get_x() + box.get_width() / 2, box.get_y() + box.get_height() / 2, f'n={num_data}', ha='center', va='bottom')
     st.pyplot(fig)  # Menampilkan gambar menggunakan st.pyplot()
 
 # Fungsi untuk menampilkan scatter plot
