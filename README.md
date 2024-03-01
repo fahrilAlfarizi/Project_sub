@@ -1,8 +1,7 @@
 # Collecting Data With Python
 ## Setup environment:
 ```
-conda create --name main-ds python=3.11
-conda activate main-ds
+Librarry Requirement
 pip install numpy pandas scipy matplotlib seaborn streamlit babel
 
 ```
