@@ -276,4 +276,3 @@ if 'Kesimpulan Hasil Analisis' in selected_options:
 st.sidebar.markdown("Nama  : Fahril Sidik Alfarizi")
 st.sidebar.markdown("Email : fahrilsidik207@gmail.com")
 st.sidebar.markdown("ID    : fahrilalfarizi15")
-st.sidebar.markdown("Github: https://github.com/fahrilAlfarizi/project_Dicoding/tree/master")
